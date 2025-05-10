@@ -1,2 +1,6 @@
+/home/bruno/Escritorio/Progrmacion 2/tp4/src/test/java/com/um/tp4/controller/PrestamoControllerTest.java
+/home/bruno/Escritorio/Progrmacion 2/tp4/src/test/java/com/um/tp4/service/PrestamoServiceImplTest.java
+/home/bruno/Escritorio/Progrmacion 2/tp4/src/test/java/com/um/tp4/service/UsuarioServiceImplTest.java
 /home/bruno/Escritorio/Progrmacion 2/tp4/src/test/java/com/um/tp4/controller/LibroControllerTest.java
-/home/bruno/Escritorio/Progrmacion 2/tp4/src/test/java/com/um/tp4/service/LibroServiceImplTest.java
+/home/bruno/Escritorio/Progrmacion 2/tp4/src/test/java/com/um/tp4/service/LibroServiceTest.java
+/home/bruno/Escritorio/Progrmacion 2/tp4/src/test/java/com/um/tp4/controller/UsuarioControllerTest.java

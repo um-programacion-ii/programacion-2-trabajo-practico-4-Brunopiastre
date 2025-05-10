@@ -1,5 +1,6 @@
 package com.um.tp4.service;
 
+import com.um.tp4.exception.RecursoNoEncontradoException;
 import com.um.tp4.model.Prestamo;
 import com.um.tp4.repository.PrestamoRepository;
 import org.springframework.stereotype.Service;
@@ -16,8 +17,9 @@ public class PrestamoServiceImpl implements PrestamoService {
     }
 
     @Override
-    public Prestamo guardar(Prestamo prestamo) {
-        return prestamoRepository.save(prestamo);
+    public Prestamo buscarPorId(Long id) {
+        return prestamoRepository.findById(id)
+                .orElseThrow(() -> new RecursoNoEncontradoException("Préstamo no encontrado: " + id));
     }
 
     @Override
@@ -26,13 +28,21 @@ public class PrestamoServiceImpl implements PrestamoService {
     }
 
     @Override
-    public Prestamo buscarPorId(Long id) {
-        return prestamoRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Préstamo no encontrado: " + id));
+    public Prestamo guardar(Prestamo prestamo) {
+        return prestamoRepository.save(prestamo);
     }
 
     @Override
     public void eliminar(Long id) {
         prestamoRepository.deleteById(id);
+    }
+
+    @Override
+    public Prestamo actualizar(Long id, Prestamo prestamo) {
+        if (!prestamoRepository.existsById(id)) {
+            throw new RecursoNoEncontradoException("Préstamo no encontrado con ID: " + id);
+        }
+        prestamo.setId(id);
+        return prestamoRepository.save(prestamo);
     }
 }

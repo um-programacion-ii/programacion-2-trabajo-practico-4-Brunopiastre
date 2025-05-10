@@ -1,5 +1,6 @@
 package com.um.tp4.service;
 
+import com.um.tp4.exception.RecursoNoEncontradoException;
 import com.um.tp4.model.Usuario;
 import com.um.tp4.repository.UsuarioRepository;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Override
     public Usuario buscarPorEmail(String email) {
         return usuarioRepository.findByEmail(email)
-                .orElseThrow(() -> new RuntimeException("Usuario no encontrado: " + email));
+                .orElseThrow(() -> new RecursoNoEncontradoException("Usuario no encontrado: " + email));
     }
 
     @Override
@@ -39,7 +40,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Override
     public Usuario actualizar(Long id, Usuario usuario) {
         if (!usuarioRepository.existsById(id)) {
-            throw new RuntimeException("Usuario no encontrado para actualizar: " + id);
+            throw new RecursoNoEncontradoException("Usuario no encontrado con ID: " + id);
         }
         usuario.setId(id);
         return usuarioRepository.save(usuario);
